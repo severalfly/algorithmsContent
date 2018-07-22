@@ -9,78 +9,82 @@ import java.util.Random;
 
 public class MaxHeapSort
 {
-	int[] A = new int[] { 0, 10, 16, 23, 6, 3, 1, 9, 5 };
+	int[] A = new int[] { 0, 70, 3, 80, 66, 45, 9, 94, 40, 16 };
+	int heapSize = A.length - 1;
 
 	@Test
 	public void testHeapSort()
 	{
-		int length = 1024;
-		int[] B = new int[length];
+		int length = 102400;
+		A = new int[length];
+		heapSize = A.length - 1;
 		for (int i = 1; i < length; i++)
 		{
-			B[i] = new Random().nextInt(100000);
+			A[i] = new Random().nextInt(10000);
 		}
-		heapSort(B);
-		System.out.println(JSONObject.toJSONString(B));
-		for (int i = 2; i < length; i++)
+		heapSort(A);
+		System.out.println(JSONObject.toJSONString(A));
+		for (int i = 1; i < A.length; i++)
 		{
-			if (B[i - 1] > B[i])
+			if (A[i - 1] > A[i])
 			{
-				System.out.println(B[i - 1] + "   " + B[i] + "   " + i);
+				System.out.println(A[i - 1] + "   " + A[i] + "   " + i);
 			}
 		}
 	}
 
 	public void heapSort(int[] A)
 	{
+		buildMaxHeap(A);
+		System.out.println("init heap:  " + JSONObject.toJSONString(A));
 		int n = A.length - 1;
-		int heapSize = A.length - 1;
-		for (int i = n; i > 1; i--)
+		for (int i = n; i > 0 && heapSize > 0; i--)
 		{
-			maxHeapify(A, 1, heapSize);
-			//			System.out.println(JSONObject.toJSONString(A));
-			DataOper.swapInt(A, 1, heapSize);
+			DataOper.swapInt(A, 0, heapSize);
 			heapSize--;
-
+			//			maxHeapify(A, i);
+			//			System.out.println("after heap: " + JSONObject.toJSONString(A));
+			buildMaxHeap(A);
 		}
 
 	}
 
-	private void buildMaxHeap(int[] A, int heapSize)
+	private void buildMaxHeap(int[] A)
 	{
 		int n = A.length - 1;
-		for (int i = n / 2; i >= 1; i--)
+		for (int i = (n + 1) / 2; i >= 0; i--)
 		{
-			maxHeapify(A, i, heapSize);
+			maxHeapify(A, i);
 		}
 	}
 
 	@Test
 	public void testbuildMaxHeap()
 	{
-		int length = 1024;
-		int[] B = new int[length];
-		for (int i = 1; i < length; i++)
-		{
-			B[i] = new Random().nextInt(100000);
-		}
-		buildMaxHeap(B, B.length - 1);
-		System.out.println(JSONObject.toJSONString(B));
+		//		int length = 11;
+		//		int[] B = new int[length];
+		//		for (int i = 1; i < length; i++)
+		//		{
+		//			B[i] = new Random().nextInt(100);
+		//		}
+		System.out.println(JSONObject.toJSONString(A));
+		buildMaxHeap(A);
+		System.out.println(JSONObject.toJSONString(A));
 	}
 
 	@Test
 	public void testMaxHeapify()
 	{
 
-		maxHeapify(A, 1, A.length - 1);
+		maxHeapify(A, 0);
 		System.out.println(JSONObject.toJSONString(A));
 	}
 
-	private void maxHeapify(int[] A, int i, int heapSize)
+	private void maxHeapify(int[] A, int i)
 	{
 		int l = left(i);
 		int r = right(i);
-		int largest = -1;
+		int largest = i;
 		if (l <= heapSize && A[l] > A[i])
 		{
 			largest = l;
@@ -99,7 +103,8 @@ public class MaxHeapSort
 			// 不是最大堆
 			DataOper.swapInt(A, i, largest);
 			//			System.out.println(String.format("%s, %s, %s", A[i], A[l], A[r]));
-			maxHeapify(A, largest, heapSize);
+			maxHeapify(A, largest);
+			//			maxHeapify(A, r, heapSize);
 		}
 	}
 
@@ -110,11 +115,11 @@ public class MaxHeapSort
 
 	private int left(int i)
 	{
-		return 2 * i;
+		return 2 * i + 1;
 	}
 
 	private int right(int i)
 	{
-		return 2 * i + 1;
+		return 2 * i + 2;
 	}
 }
