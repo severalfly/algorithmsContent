@@ -2,11 +2,15 @@ package com.leon.ch6;
 
 import com.alibaba.fastjson.JSONObject;
 import com.leon.utils.DataOper;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Random;
 
+@Setter
+@Getter
 public class MaxHeapSort
 {
 	int[] A = new int[] { 0, 70, 3, 80, 66, 45, 9, 94, 40, 16 };
@@ -49,7 +53,7 @@ public class MaxHeapSort
 
 	}
 
-	private void buildMaxHeap(int[] A)
+	void buildMaxHeap(int[] A)
 	{
 		int n = A.length - 1;
 		for (int i = (n + 1) / 2; i >= 0; i--)
@@ -80,7 +84,7 @@ public class MaxHeapSort
 		System.out.println(JSONObject.toJSONString(A));
 	}
 
-	private void maxHeapify(int[] A, int i)
+	void maxHeapify(int[] A, int i)
 	{
 		int l = left(i);
 		int r = right(i);
@@ -104,7 +108,6 @@ public class MaxHeapSort
 			DataOper.swapInt(A, i, largest);
 			//			System.out.println(String.format("%s, %s, %s", A[i], A[l], A[r]));
 			maxHeapify(A, largest);
-			//			maxHeapify(A, r, heapSize);
 		}
 	}
 
