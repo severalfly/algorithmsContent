@@ -5,7 +5,7 @@ import org.junit.Test;
 
 public class InorderTreeWalk
 {
-	private void inOrderTreeWald(TreeW treeW)
+	public static void inOrderTreeWald(TreeW treeW)
 	{
 		if (treeW != null)
 		{
@@ -23,7 +23,7 @@ public class InorderTreeWalk
 		System.out.println("end to in order tree walk");
 	}
 
-	private TreeW treeSearch(TreeW treeW, int k)
+	public static TreeW treeSearch(TreeW treeW, int k)
 	{
 		if (treeW == null || k == treeW.getKey())
 		{
@@ -50,7 +50,7 @@ public class InorderTreeWalk
 		DataOper.print(treeW1);
 	}
 
-	private TreeW interativeTreeSearch(TreeW treeW, int k)
+	public static TreeW interativeTreeSearch(TreeW treeW, int k)
 	{
 		while (treeW != null && treeW.getKey() != k)
 		{

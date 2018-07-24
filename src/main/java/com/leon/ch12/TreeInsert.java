@@ -9,7 +9,7 @@ public class TreeInsert
 	 * @param t tree
 	 * @param z 待插入的节点
 	 */
-	private void treeInsert(TreeW t, TreeW z)
+	public static void treeInsert(TreeW t, TreeW z)
 	{
 		TreeW y = null;
 		TreeW x = t;
@@ -47,7 +47,7 @@ public class TreeInsert
 		TreeW treeW = TreeUtils.buildTreeW();
 		TreeUtils.printTree(treeW);
 		System.out.println();
-		TreeW z = new TreeW(5);
+		TreeW z = new TreeW(0);
 		treeInsert(treeW, z);
 
 		System.out.println(treeW.getKey());
