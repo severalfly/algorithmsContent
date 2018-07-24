@@ -43,9 +43,29 @@ public class InorderTreeWalk
 	public void testTreeSearch()
 	{
 		TreeW treeW = buildTreeW();
-		TreeW treeW1 = treeSearch(treeW, 1);
+		int k = 2;
+		TreeW treeW1 = treeSearch(treeW, k);
+		DataOper.print(treeW1);
+		treeW1 = interativeTreeSearch(treeW, k);
 		DataOper.print(treeW1);
 	}
+
+	private TreeW interativeTreeSearch(TreeW treeW, int k)
+	{
+		while (treeW != null && treeW.getKey() != k)
+		{
+			if (k < treeW.getKey())
+			{
+				treeW = treeW.getLeft();
+			}
+			else
+			{
+				treeW = treeW.getRight();
+			}
+		}
+		return treeW;
+	}
+
 
 	private static TreeW buildTreeW()
 	{
