@@ -17,7 +17,7 @@ public class InorderTreeWalk
 
 	public static void main(String[] args)
 	{
-		TreeW treeW = buildTreeW();
+		TreeW treeW = TreeUtils.buildTreeW();
 		System.out.println("start to in order tree walk");
 		new InorderTreeWalk().inOrderTreeWald(treeW);
 		System.out.println("end to in order tree walk");
@@ -42,7 +42,7 @@ public class InorderTreeWalk
 	@Test
 	public void testTreeSearch()
 	{
-		TreeW treeW = buildTreeW();
+		TreeW treeW = TreeUtils.buildTreeW();
 		int k = 2;
 		TreeW treeW1 = treeSearch(treeW, k);
 		DataOper.print(treeW1);
@@ -66,16 +66,6 @@ public class InorderTreeWalk
 		return treeW;
 	}
 
-
-	private static TreeW buildTreeW()
-	{
-		TreeW treeW = new TreeW(2);
-		TreeW treeW2 = new TreeW(1);
-		TreeW treeW3 = new TreeW(3);
-		treeW.setLeft(treeW2);
-		treeW.setRight(treeW3);
-		return treeW;
-	}
 }
 
 
