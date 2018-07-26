@@ -1,5 +1,6 @@
 package com.leon.ch12;
 
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 
 public class TreeDelete
@@ -12,7 +13,7 @@ public class TreeDelete
 	 */
 	private void transplant(TreeW t, TreeW u, TreeW v)
 	{
-		if (t == null)
+		if (u.getP() == null)
 		{
 			t = v;
 		}
@@ -65,10 +66,10 @@ public class TreeDelete
 	public void testDelete()
 	{
 		TreeW treeW = TreeUtils.buildTreeW();
-		TreeW z = new TreeW(7);
-		TreeUtils.outputTree(treeW);
-
+		//		TreeUtils.outputTree(treeW);
+		System.out.println(JSONObject.toJSONString(treeW));
+		TreeW z = InorderTreeWalk.treeSearch(treeW, 5);
 		treeDelete(treeW, z);
-		TreeUtils.outputTree(treeW);
+		System.out.println(JSONObject.toJSONString(treeW));
 	}
 }

@@ -35,6 +35,7 @@ public class TreeUtils
 	{
 		System.out.println(treeW.getKey());
 		printTree(treeW);
+		System.out.println();
 	}
 
 	/**
