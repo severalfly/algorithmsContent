@@ -1,5 +1,7 @@
 package com.leon.ch12;
 
+import org.junit.Test;
+
 public class TreeDelete
 {
 	/**
@@ -57,5 +59,16 @@ public class TreeDelete
 			y.setLeft(z.getLeft());
 			y.getLeft().setP(y);
 		}
+	}
+
+	@Test
+	public void testDelete()
+	{
+		TreeW treeW = TreeUtils.buildTreeW();
+		TreeW z = new TreeW(7);
+		TreeUtils.outputTree(treeW);
+
+		treeDelete(treeW, z);
+		TreeUtils.outputTree(treeW);
 	}
 }

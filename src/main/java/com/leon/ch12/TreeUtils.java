@@ -4,7 +4,7 @@ public class TreeUtils
 {
 	public static TreeW buildTreeW()
 	{
-		TreeW treeW = new TreeW(7);
+		TreeW treeW = new TreeW(5);
 		//		TreeW treeW2 = new TreeW(1);
 		//		TreeW treeW3 = new TreeW(6);
 		//		treeW.setLeft(treeW2);
@@ -12,7 +12,7 @@ public class TreeUtils
 		TreeInsert.treeInsert(treeW, new TreeW(1));
 		TreeInsert.treeInsert(treeW, new TreeW(6));
 		TreeInsert.treeInsert(treeW, new TreeW(9));
-		TreeInsert.treeInsert(treeW, new TreeW(5));
+		TreeInsert.treeInsert(treeW, new TreeW(7));
 		TreeInsert.treeInsert(treeW, new TreeW(4));
 		return treeW;
 	}
@@ -21,7 +21,7 @@ public class TreeUtils
 	 * 中序打印
 	 * @param treeW 待打印
 	 */
-	public static void printTree(TreeW treeW)
+	private static void printTree(TreeW treeW)
 	{
 		if (treeW != null)
 		{
@@ -29,6 +29,12 @@ public class TreeUtils
 			System.out.print(treeW.getKey() + " ");
 			printTree(treeW.getRight());
 		}
+	}
+
+	public static void outputTree(TreeW treeW)
+	{
+		System.out.println(treeW.getKey());
+		printTree(treeW);
 	}
 
 	/**

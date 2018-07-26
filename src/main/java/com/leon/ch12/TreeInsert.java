@@ -45,14 +45,14 @@ public class TreeInsert
 	public void testTreeInsert()
 	{
 		TreeW treeW = TreeUtils.buildTreeW();
-		TreeUtils.printTree(treeW);
+		TreeUtils.outputTree(treeW);
 		System.out.println();
 		TreeW z = new TreeW(0);
 		treeInsert(treeW, z);
 
 		System.out.println(treeW.getKey());
 		// 打印看看结果
-		TreeUtils.printTree(treeW);
+		TreeUtils.outputTree(treeW);
 		System.out.println();
 
 	}
