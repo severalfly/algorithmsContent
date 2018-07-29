@@ -7,9 +7,9 @@ public class RbTreeOper
 	 * @param t 主树
 	 * @param x 被旋转节点
 	 */
-	public static RbTree leftRotate(RbTree t, RbTree x)
+	public static void leftRotate(RbTree t, RbTree x)
 	{
-		RbTree root = t;
+		//		RbTree root = t;
 		RbTree y = x.getRight();
 		x.setRight(y.getLeft());
 		if (y.getLeft() != null)
@@ -19,7 +19,8 @@ public class RbTreeOper
 		y.setP(x.getP());
 		if (x.getP() == null)
 		{
-			root = y;
+			t.setRoot(y);
+			//			t = y;
 		}
 		else if (x == x.getP().getLeft())
 		{
@@ -31,7 +32,7 @@ public class RbTreeOper
 		}
 		y.setLeft(x);
 		x.setP(y);
-		return root;
+		//		return root;
 	}
 
 	/**
@@ -71,17 +72,19 @@ public class RbTreeOper
 	 */
 	public static RbTree buildRbtree()
 	{
-		RbTree tree = new RbTree(5);
-		RbTree tree1 = new RbTree(4);
-		RbTree tree2 = new RbTree(6);
-		RbTree tree3 = new RbTree(7);
-		RbTree tree4 = new RbTree(8);
-		tree.setLeft(tree1);
-		tree1.setP(tree);
-		tree.setRight(tree2);
-		tree2.setP(tree);
-		tree2.setRight(tree3);
-		tree3.setP(tree2);
+		RbTree tree = new RbTree(0);
+		RbTree node = new RbTree(5);
+		RbTree node1 = new RbTree(4);
+		RbTree node2 = new RbTree(6);
+		RbTree node3 = new RbTree(7);
+		//		RbTree tree4 = new RbTree(8);
+		node.setLeft(node1);
+		node1.setP(node);
+		node.setRight(node2);
+		node2.setP(node);
+		node2.setRight(node3);
+		node3.setP(node2);
+		tree.setRoot(node);
 		return tree;
 	}
 
@@ -108,5 +111,16 @@ public class RbTreeOper
 		System.out.print(tree.getKey() + ": ");
 		inOrderPrint(tree);
 		System.out.println();
+	}
+
+	public static void rbInsert(RbTree t, RbTree z)
+	{
+		RbTree y = null;
+		RbTree x = t;
+		while (x != null)
+		{
+			y = x;
+			//			if
+		}
 	}
 }

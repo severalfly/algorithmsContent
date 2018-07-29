@@ -12,6 +12,7 @@ public class RbTree
 	private RbTree p;
 	private RbTree left;
 	private RbTree right;
+	private RbTree root;
 
 	public RbTree(int key)
 	{
