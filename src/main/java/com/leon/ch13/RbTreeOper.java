@@ -120,7 +120,83 @@ public class RbTreeOper
 		while (x != null)
 		{
 			y = x;
-			//			if
+			if (z.getKey() < x.getKey())
+			{
+				x = x.getLeft();
+			}
+			else
+			{
+				x = x.getRight();
+			}
+		}
+		z.setP(y);
+		if (y == null)
+		{
+			t.setRoot(z);
+		}
+		else if (z.getKey() < y.getKey())
+		{
+			y.setLeft(z);
+		}
+		else
+		{
+			y.setRight(z);
+		}
+		z.setLeft(null);
+		z.setRight(null);
+		x.setColor(RbColor.RED);
+		rbInsertFixup(t, z);
+	}
+
+	private static void rbInsertFixup(RbTree t, RbTree z)
+	{
+		while (z.getP().getColor() == RbColor.RED)
+		{
+			if (z.getP() == z.getP().getP().getLeft())
+			{
+				RbTree y = z.getP().getP().getRight();
+				if (y.getColor() == RbColor.RED)
+				{
+					z.getP().setColor(RbColor.BLACK);
+					y.setColor(RbColor.BLACK);
+					z.getP().getP().setColor(RbColor.RED);
+					z = z.getP().getP();
+				}
+				else if (z == z.getP().getRight())
+				{
+					z = z.getP();
+					leftRotate(t, z);
+				}
+				else
+				{
+					z.getP().setColor(RbColor.BLACK);
+					z.getP().getP().setColor(RbColor.RED);
+					rightRotate(t, z.getP().getP());
+				}
+			}
+			else
+			{
+				RbTree y = z.getP().getP().getLeft();
+				if (y.getColor() == RbColor.RED)
+				{
+					z.getP().setColor(RbColor.BLACK);
+					y.setColor(RbColor.BLACK);
+					z.getP().getP().setColor(RbColor.RED);
+					z = z.getP().getP();
+				}
+				else if (z == z.getP().getLeft())
+				{
+					z = z.getP();
+					rightRotate(t, z);
+				}
+				else
+				{
+					z.getP().setColor(RbColor.BLACK);
+					z.getP().getP().setColor(RbColor.RED);
+					leftRotate(t, z.getP().getP());
+				}
+			}
+			t.getRoot().setColor(RbColor.BLACK);
 		}
 	}
 }
