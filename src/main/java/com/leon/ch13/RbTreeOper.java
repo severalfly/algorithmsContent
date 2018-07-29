@@ -40,9 +40,9 @@ public class RbTreeOper
 	 * @param t 树
 	 * @param y 待旋转
 	 */
-	public static RbTree rightRotate(RbTree t, RbTree y)
+	public static void rightRotate(RbTree t, RbTree y)
 	{
-		RbTree root = t;
+		//		RbTree root = t;
 		RbTree x = y.getLeft();
 		y.setLeft(x.getRight());
 		if (x.getRight() != null)
@@ -52,7 +52,7 @@ public class RbTreeOper
 		x.setP(y.getP());
 		if (y.getP() == null)
 		{
-			root = x;
+			t.setRoot(x);
 		}
 		else if (y == y.getP().getRight())
 		{
@@ -64,7 +64,7 @@ public class RbTreeOper
 		}
 		x.setRight(y);
 		y.setP(x);
-		return root;
+		//		return root;
 	}
 
 	/**
