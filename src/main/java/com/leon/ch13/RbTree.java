@@ -3,8 +3,6 @@ package com.leon.ch13;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
 public class RbTree
@@ -15,6 +13,15 @@ public class RbTree
 	private RbTree left;
 	private RbTree right;
 
+	public RbTree(int key)
+	{
+		this.color = RbColor.BLACK;
+		this.key = key;
+		this.p = null;
+		this.left = null;
+		this.right = null;
+	}
+
 	public RbTree(int key, RbColor color)
 	{
 		this.color = color;
@@ -22,12 +29,6 @@ public class RbTree
 		this.p = null;
 		this.left = null;
 		this.right = null;
-		List
-	}
-
-	public RbTree(int key)
-	{
-		RbTree(key, RbColor.BLACK);
 	}
 
 }
