@@ -25,8 +25,50 @@ public class CutRod
 	public void testCutRod()
 	{
 		long time = System.currentTimeMillis();
-		int q = curRod(this.pData, 35);
+		int q = curRod(this.pData, 30);
 		long dtime = System.currentTimeMillis() - time;
 		System.out.println(q + "  " + dtime);
+	}
+
+	@Test
+	public void testMemoizedCutRod()
+	{
+		long time = System.currentTimeMillis();
+		int q = memoizedCutRod(pData, 40);
+		long dtime = System.currentTimeMillis() - time;
+		System.out.println(q + "  " + dtime);
+	}
+
+	private int memoizedCutRod(int[] p, int n)
+	{
+		int[] r = new int[n + 1];
+		for (int i = 0; i <= n; i++)
+		{
+			r[i] = 0 - Integer.MAX_VALUE;
+		}
+		return memoizedCutRodAux(p, n, r);
+	}
+
+	private int memoizedCutRodAux(int[] p, int n, int[] r)
+	{
+		if (r[n] >= 0)
+		{
+			return r[n];
+		}
+		int q = 0 - Integer.MAX_VALUE;
+		if (n == 0)
+		{
+			q = 0;
+		}
+		else
+		{
+			for (int i = 1; i <= n; i++)
+			{
+				int tmp = p[i] + memoizedCutRodAux(p, n - i, r);
+				q = Math.max(q, tmp);
+			}
+		}
+		r[n] = q;
+		return q;
 	}
 }
