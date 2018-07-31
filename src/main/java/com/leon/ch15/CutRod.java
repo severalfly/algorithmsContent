@@ -131,7 +131,6 @@ public class CutRod
 	public void testExtendBottomUpCutRod()
 	{
 		SAndR sAndR = extendBottomUpCutRod(pData, 30);
-
 		System.out.println(JSONObject.toJSONString(sAndR));
 	}
 
