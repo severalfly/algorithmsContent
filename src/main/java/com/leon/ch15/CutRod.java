@@ -1,5 +1,8 @@
 package com.leon.ch15;
 
+import com.alibaba.fastjson.JSONObject;
+import lombok.Getter;
+import lombok.Setter;
 import org.junit.Test;
 
 public class CutRod
@@ -98,5 +101,50 @@ public class CutRod
 			r[j] = q;
 		}
 		return r[n];
+	}
+
+	private SAndR extendBottomUpCutRod(int[] p, int n)
+	{
+		int[] r = new int[n + 1];
+		int[] s = new int[n + 1];
+		for (int i = 0; i <= n; i++)
+		{
+			r[i] = 0;
+		}
+		for (int j = 1; j <= n; j++)
+		{
+			int q = Integer.MIN_VALUE;
+			for (int i = 1; i <= j; i++)
+			{
+				if (q < p[i] + r[j - i])
+				{
+					q = p[i] + r[j - i];
+					s[j] = i;
+				}
+			}
+			r[j] = q;
+		}
+		return new SAndR(r, s);
+	}
+
+	@Test
+	public void testExtendBottomUpCutRod()
+	{
+		SAndR sAndR = extendBottomUpCutRod(pData, 30);
+		System.out.println(JSONObject.toJSONString(sAndR));
+	}
+}
+
+@Setter
+@Getter
+class SAndR
+{
+	private int[] r;
+	private int[] s;
+
+	public SAndR(int[] r, int[] s)
+	{
+		this.r = r;
+		this.s = s;
 	}
 }
