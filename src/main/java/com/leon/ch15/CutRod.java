@@ -133,6 +133,7 @@ public class CutRod
 		SAndR sAndR = extendBottomUpCutRod(pData, 30);
 		System.out.println(JSONObject.toJSONString(sAndR));
 	}
+
 }
 
 @Setter
