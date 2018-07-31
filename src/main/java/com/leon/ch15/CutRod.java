@@ -134,6 +134,11 @@ public class CutRod
 		System.out.println(JSONObject.toJSONString(sAndR));
 	}
 
+	@Test
+	public void testMatrix()
+	{
+
+	}
 }
 
 @Setter
