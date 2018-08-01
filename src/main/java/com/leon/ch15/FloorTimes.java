@@ -24,6 +24,7 @@ public class FloorTimes
 	@Test
 	public void testFloorTime()
 	{
+		System.out.println("start to cal");
 		System.out.println(floorTimes(1));
 		System.out.println(floorTimes(2));
 		System.out.println(floorTimes(3));
