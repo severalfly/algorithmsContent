@@ -60,6 +60,13 @@ public class LcsLength
 		printLcs(b, xData, xData.length - 1, yData.length - 1);
 	}
 
+	/**
+	 * 逆向打印出序列，实际结果是正序
+	 * @param b
+	 * @param xData
+	 * @param i
+	 * @param j
+	 */
 	private void printLcs(int[][] b, int[] xData, int i, int j)
 	{
 		if (i == 0 || j == 0)
