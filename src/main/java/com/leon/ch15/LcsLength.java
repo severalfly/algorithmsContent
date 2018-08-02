@@ -5,8 +5,8 @@ import org.junit.Test;
 
 public class LcsLength
 {
-	private int[] xData = new int[] { 1, 2, 3, 2, 4, 1, 2, 0 };
-	private int[] yData = new int[] { 2, 4, 3, 1, 2, 1, 0 };
+	private int[] xData = new int[] { 0, 1, 2, 3, 2, 4, 1, 2 };
+	private int[] yData = new int[] { 0, 2, 4, 3, 1, 2, 1 };
 
 	private int lcsLength(int[] x, int[] y)
 	{
@@ -30,17 +30,17 @@ public class LcsLength
 				if (x[i] == y[j])
 				{
 					c[i][j] = c[i - 1][j - 1] + 1;
-					b[i][j] = 2;
+					b[i][j] = 12;
 				}
 				else if (c[i - 1][j] >= c[i][j - 1])
 				{
 					c[i][j] = c[i - 1][j];
-					b[i][j] = 1;
+					b[i][j] = 11;
 				}
 				else
 				{
 					c[i][j] = c[i][j - 1];
-					b[i][j] = 0;
+					b[i][j] = 10;
 				}
 			}
 		}
