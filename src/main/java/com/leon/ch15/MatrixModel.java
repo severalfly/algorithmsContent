@@ -17,4 +17,5 @@ public class MatrixModel
 		this.row = row;
 		this.column = column;
 	}
+
 }
