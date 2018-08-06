@@ -21,7 +21,7 @@ public class TTTTTTT {
 }
 
 class Det {
-	private String s;
+	private String s; // s
 
 	public String getS() {
 		return this.s;
