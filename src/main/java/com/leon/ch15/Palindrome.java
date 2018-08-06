@@ -11,7 +11,7 @@ import org.junit.Test;
 public class Palindrome
 {
 	//	private String str = "ara";
-	private String str = "adhfoaefhadklfjaopidhfalasdqwey";
+	private String str = "adhfoaefhadklfjaopidhfalasdqweya";
 
 	private int[][] palindrome(String str)
 	{
