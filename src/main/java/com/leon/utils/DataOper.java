@@ -1,7 +1,6 @@
 package com.leon.utils;
 
 import com.alibaba.fastjson.JSONObject;
-import org.junit.Test;
 
 public class DataOper
 {
@@ -25,5 +24,24 @@ public class DataOper
 	public static void print(Object object)
 	{
 		System.out.println(JSONObject.toJSONString(object));
+	}
+
+	/**
+	 * 打印整型的二维数组
+	 * @param data 待打印数据
+	 */
+	public static void printMatrix(int[][] data)
+	{
+		int n = data.length;
+		for (int i = 0; i < n; i++)
+		{
+			int l = data[i].length;
+			for (int j = 0; j < l; j++)
+			{
+				System.out.print(data[i][j]);
+				System.out.print(" ");
+			}
+			System.out.println();
+		}
 	}
 }
