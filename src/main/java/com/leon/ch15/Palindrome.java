@@ -14,7 +14,7 @@ public class Palindrome
 	//	private String str = "ara";
 	private String str = "chcaracter";
 
-	private void palindrome(String str)
+	private int[][] palindrome(String str)
 	{
 		int n = str.length();
 		int[][] w = new int[n][n]; // 保存最长回文的数量
@@ -22,27 +22,56 @@ public class Palindrome
 
 		for (int i = 0; i < w.length; i++)
 		{
-			for (int j = 0; j < w[i].length; j++)
-			{
-				w[i][j] = 1;
-			}
+			w[i][i] = 1;
 		}
 
-		for (int i = 0; i < n; i++)
+		for (int i = 1; i < n; i++)
 		{
-			for (int j = i + 1; j < n; j++)
+			for (int j = 0; j + i < n; j++)
 			{
+				int tmp = 0;
+				if (str.charAt(j + i) == str.charAt(j))
+				{
+					tmp = w[j + 1][j + i - 1] + 2;
+				}
+				else
+				{
+					tmp = Math.max(w[j + 1][j + i], w[j][j + i - 1]);
+				}
+				w[j][j + i] = tmp;
 			}
 		}
 		DataOper.printMatrix(w);
+		return w;
 	}
 
 	@Test
 	public void testPalindrome()
 	{
-		//		palindrome(this.str);
-		int palindrome = palindrome(this.str, 0, str.length() - 1);
-		System.out.println(palindrome);
+		int[][] w = palindrome(this.str);
+		int length = w[0][w.length - 1];
+		int i = 0;
+		int j = w.length - 1;
+		for (; i < w.length; i++)
+		{
+			if (w[i][w.length - 1] != length)
+			{
+				break;
+			}
+		}
+		i--;
+		for (; j >= 0; j--)
+		{
+			if (w[0][j] != length)
+			{
+				break;
+			}
+		}
+		j++;
+		//		System.out.println(i + " " + j);
+		System.out.println(str.substring(i, j + 1));
+		//		int palindrome = palindrome(this.str, 0, str.length() - 1);
+		//		System.out.println(palindrome);
 	}
 
 	private int palindrome(String str, int i, int j)
