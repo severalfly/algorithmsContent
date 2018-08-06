@@ -1,6 +1,5 @@
 package com.leon.ch15;
 
-import com.leon.utils.DataOper;
 import org.junit.Test;
 
 /**
@@ -12,7 +11,7 @@ import org.junit.Test;
 public class Palindrome
 {
 	//	private String str = "ara";
-	private String str = "chcaracter";
+	private String str = "adhfoaefhadklfjaopidhfalasdqwey";
 
 	private int[][] palindrome(String str)
 	{
@@ -41,13 +40,15 @@ public class Palindrome
 				w[j][j + i] = tmp;
 			}
 		}
-		DataOper.printMatrix(w);
+		//		DataOper.printMatrix(w);
 		return w;
 	}
 
 	@Test
 	public void testPalindrome()
 	{
+		System.out.println(this.str.length());
+		long now = System.currentTimeMillis();
 		int[][] w = palindrome(this.str);
 		int length = w[0][w.length - 1];
 		int i = 0;
@@ -69,9 +70,20 @@ public class Palindrome
 		}
 		j++;
 		//		System.out.println(i + " " + j);
-		System.out.println(str.substring(i, j + 1));
-		//		int palindrome = palindrome(this.str, 0, str.length() - 1);
-		//		System.out.println(palindrome);
+		String subStr = str.substring(i, j + 1);
+		System.out.println(subStr.length());
+
+		System.out.println(System.currentTimeMillis() - now);
+	}
+
+	@Test
+	public void testPalindromeReverse()
+	{
+		System.out.println(this.str.length());
+		long now = System.currentTimeMillis();
+		int palindrome = palindrome(this.str, 0, str.length() - 1);
+		System.out.println(palindrome);
+		System.out.println(System.currentTimeMillis() - now);
 	}
 
 	private int palindrome(String str, int i, int j)
