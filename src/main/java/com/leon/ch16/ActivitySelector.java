@@ -26,5 +26,21 @@ public class ActivitySelector
 	public void testRecursiveActivitySelector()
 	{
 		recursiveActivitySelector(this.s, this.f, 0, s.length - 1);
+		greedyActivitySelector(this.s, this.f);
+	}
+
+	private void greedyActivitySelector(int[] s, int[] f)
+	{
+		int n = s.length;
+		System.out.println(s[1] + " " + f[1]);
+		int k = 1;
+		for (int i = 2; i < n; i++)
+		{
+			if (s[i] >= f[k])
+			{
+				System.out.println(s[i] + " " + f[i]);
+				k = i;
+			}
+		}
 	}
 }
