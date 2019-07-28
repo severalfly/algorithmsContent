@@ -35,7 +35,7 @@ public class FindMaxCrossingSubarray
 			}
 		}
 
-		SubArrayRes res = fillRes(maxLeft, maxRight, leftSum + rightSum);
+		SubArrayRes res = new SubArrayRes(maxLeft, maxRight, leftSum + rightSum);
 		return res;
 	}
 
@@ -51,7 +51,7 @@ public class FindMaxCrossingSubarray
 	{
 		if (high == low)
 		{
-			return fillRes(low, high, A[low]);
+			return new SubArrayRes(low, high, A[low]);
 		}
 		int mid = (low + high) / 2;
 		SubArrayRes leftRes = findMaxmumSubarray(A, low, mid);
@@ -80,21 +80,19 @@ public class FindMaxCrossingSubarray
 		SubArrayRes res = findMaxmumSubarray(A, 0, A.length - 1);
 		System.out.println(JSONObject.toJSONString(res));
 	}
-
-	private SubArrayRes fillRes(int left, int right, int sum)
-	{
-		SubArrayRes res = new SubArrayRes();
-		res.setLeft(left);
-		res.setRight(right);
-		res.setSum(sum);
-		return res;
-	}
 }
 
 @Setter
 @Getter
 class SubArrayRes
 {
+	public SubArrayRes(int left, int right, int sum)
+	{
+		this.left = left;
+		this.right = right;
+		this.sum = sum;
+	}
+
 	private int left;
 	private int right;
 	private int sum;
