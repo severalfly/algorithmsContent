@@ -80,6 +80,21 @@ public class FindMaxCrossingSubarray
 		SubArrayRes res = findMaxmumSubarray(A, 0, A.length - 1);
 		System.out.println(JSONObject.toJSONString(res));
 	}
+
+	@Test
+	public void testFindMaxV2()
+	{
+		int[] A = new int[] { 13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, -4, 7 };
+		int maxsofar = 0;
+		int maxendinghere = 0;
+		for (int i = 0; i < A.length; i++)
+		{
+			maxendinghere = Math.max(maxendinghere + A[i], 0);
+			maxsofar = Math.max(maxsofar, maxendinghere);
+		}
+		System.out.println(maxendinghere + "  " + maxsofar);
+	}
+
 }
 
 @Setter
